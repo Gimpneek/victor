@@ -1,2 +1,2 @@
-# night-of-the-living-documentation
-Generate Living Documentation
+# Night of the Living Documentation
+Brains or something
