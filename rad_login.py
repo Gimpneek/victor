@@ -5,8 +5,9 @@ import requests
 import urlparse
 app = Flask(__name__)
 
-CLIENT_ID=os.environ.get('CLIENTID')
-CLIENT_SECRET=os.environ.get('CLIENTSECRET')
+CLIENT_ID = os.environ.get('CLIENTID')
+CLIENT_SECRET = os.environ.get('CLIENTSECRET')
+
 
 @app.route('/')
 def homepage():
@@ -20,6 +21,7 @@ def homepage():
 	else:
 		return '<a href="https://github.com/login/oauth/authorize?scope=user:email&client_id={0}">Sign in with GitHub</a>'.format(CLIENT_ID)
 
+
 @app.route('/callback', methods=['GET'])
 def repos():
 	session_code = request.args.get('code')
@@ -32,7 +34,8 @@ def repos():
 				'accept': 'application/json'
 			}
 	)
-	access_token = urlparse.parse_qs(get_access_token.content).get('access_token')[0]
+	access_token = \
+		urlparse.parse_qs(get_access_token.content).get('access_token')[0]
 	response = make_response(redirect('/'))
 	response.set_cookie('gat', access_token)
 	return response
