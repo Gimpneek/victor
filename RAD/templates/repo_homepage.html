@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {%  block content %}
     <h1>{{ requested_repo.name }}</h1>
-
+    {% if victor_file %}
+        <pre>
+            {{ victor_file }}
+        </pre>
+    {% else %}
+        <p>No .victor.yml file was found in this repo. Please create one.</p>
+    {% endif %}
 {%  endblock %}
