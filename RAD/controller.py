@@ -78,7 +78,7 @@ def homepage():
 					'and victor_active = 1',
 					[existing_user]
 			)
-			act_repos = db_act_repos.fetchall()
+			act_repos = [ar[0] for ar in db_act_repos.fetchall()]
 			for repo in repos:
 				if repo.id in act_repos:
 					active_repos.append(repo)
