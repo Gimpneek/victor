@@ -1,4 +1,13 @@
 {% extends "base.html" %}
 {%  block content %}
-    <h1>Welcome {{ user.name }}</h1>
+    {% if active_repos %}
+    {% else %}
+        <h1>Welcome {{ user.name }}</h1>
+        <p>Activate some repos</p>
+        <ul>
+            {% for repo in repos %}
+            <li>{{ repo.name }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {%  endblock %}
