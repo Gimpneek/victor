@@ -6,6 +6,7 @@ from flask import render_template
 from flask import g
 from github import Github
 from github import BadCredentialsException
+from github import UnknownObjectException
 import os
 import requests
 import urlparse
@@ -112,22 +113,45 @@ def repo_homepage(github_account=None, repo=None):
 	# Get the logged in, repos for that user, requested account and repo
 	github = Github(login_or_token=access_token)
 	user = github.get_user()
-	repos = user.get_repos()
-	requested_account = github.get_user(github_account)
-	requested_repo = requested_account.get_repo(repo)
-	# Read the .victor file if it has one
-	try:
-		victor_file = requested_repo.get_contents('.victor.yml').decoded_content
-	except:
-		victor_file = None
-	return render_template(
-			'repo_homepage.html',
-			user=user,
-			repos=repos,
-			requested_account=requested_account,
-			requested_repo=requested_repo,
-			victor_file=victor_file
-	)
+
+	# get user id
+	check_cur = g.db.execute(
+				'select id from user where github_id = ?',
+				[user.id]
+		)
+	user_check = check_cur.fetchone()
+	if user_check:
+		user_id = user_check[0]
+		repos = user.get_repos()
+		active_repos = []
+		db_act_repos = g.db.execute(
+					'select repo_id from repo where user_id = ? '
+					'and victor_active = 1',
+					[user_id]
+		)
+		act_repos = [ar[0] for ar in db_act_repos.fetchall()]
+		for rep in repos:
+			if rep.id in act_repos:
+				active_repos.append(rep)
+
+		requested_account = github.get_user(github_account)
+		requested_repo = requested_account.get_repo(repo)
+		# Read the .victor file if it has one
+		try:
+			victor_file = requested_repo.get_contents('.victor.yml').decoded_content
+		except UnknownObjectException:
+			victor_file = None
+		return render_template(
+				'repo_homepage.html',
+				user=user,
+				repos=repos,
+				active_repos=active_repos,
+				requested_account=requested_account,
+				requested_repo=requested_repo,
+				victor_file=victor_file
+		)
+	else:
+		return make_response(redirect('/'))
 
 
 @app.route('/callback', methods=['GET'])
