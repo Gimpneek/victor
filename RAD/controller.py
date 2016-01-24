@@ -121,7 +121,6 @@ def repo_homepage(github_account=None, repo=None):
     if user_check:
         user_id = user_check[0]
         repos = user.get_repos()
-        active_repos = []
         db_act_repos = g.db.execute(
                 'select repo_id from repo where user_id = ? '
                 'and victor_active = 1',
