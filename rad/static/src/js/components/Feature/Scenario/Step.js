@@ -2,9 +2,13 @@ import React from 'react';
 
 export default class Step extends React.Component{
 	render(){
+		const { keyword } = this.props.step;
+		const { text } = this.props.step;
+		const { status } = this.props.step;
+		const statusClass = 'media ' + status;
 		return (
 			<div>
-				<article class="media">
+				<article class={statusClass}>
 					<div class="media-left">
 						<p class="image is-48x48">
 							<img src="http://placehold.it/96x96"/>
@@ -12,7 +16,7 @@ export default class Step extends React.Component{
 					</div>
 					<div class="media-content">
 						<div class="content">
-							<p><strong>Given</strong> I do a thing</p>
+							<p><strong>{keyword}</strong> {text}</p>
 						</div>
 					</div>
 				</article>

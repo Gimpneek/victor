@@ -4,15 +4,20 @@ import Step from './Scenario/Step';
 
 export default class Scenario extends React.Component{
 	render(){
+		const { title } = this.props.scenario;
+		const { background } = this.props.scenario;
+		const { steps } = this.props.scenario;
+		const Steps = steps.map((step, i) => <Step key={i} step={step} />)
+
 		return(
 			<div class="box">
 				<article class="media">
 					<div class="media-content">
 						<div class="content">
-							<h3><strong>Scenario:</strong> Meh</h3>
-							<p><strong>Background:</strong> Some foo</p>
+							<h3><strong>Scenario:</strong> {title}</h3>
+							<p><strong>Background:</strong> {background}</p>
 							<div>
-								<Step/>
+								{Steps}
 							</div>
 						</div>
 					</div>
