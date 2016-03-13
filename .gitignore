@@ -59,3 +59,4 @@ target/
 # VirtualEnv
 venv/
 bower_components
+node_modules
