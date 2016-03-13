@@ -58,3 +58,4 @@ target/
 
 # VirtualEnv
 venv/
+bower_components

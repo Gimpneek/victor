@@ -1,0 +1,23 @@
+{
+  "name": "bower_components",
+  "homepage": "https://github.com/Gimpneek/victor",
+  "authors": [
+    "Colin Wren <colin@gimpneek.com>"
+  ],
+  "description": "Victor's Frontend scripts",
+  "main": "bower.json",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^0.14.7",
+    "bulma": "^0.0.16"
+  }
+}
