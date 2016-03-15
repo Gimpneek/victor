@@ -8,7 +8,7 @@ export default class Navigation extends React.Component{
 			<nav class="navbar container is-fluid">
 				<div class="navbar-left">
 					<div class="navbar-item">
-						<p class="title">Victor</p>
+						<p class="title"><a href="/#/">Victor</a></p>
 					</div>
 				</div>
 				<div class="navbar-right">

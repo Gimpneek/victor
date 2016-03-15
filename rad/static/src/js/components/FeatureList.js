@@ -4,11 +4,12 @@ import FeatureListItem from './FeatureList/FeatureListItem';
 
 export default class FeatureList extends React.Component{
 	render(){
-		const Features = [
-			'Observation Entry',
-			'Observation Analysis',
-			'Policy Based Escalation'
-		].map((name, i) => <FeatureListItem key={i} name={name}/>);
+		const { activeFeature } = this.props;
+		const { features } = this.props;
+		const FeaturesList = features.map((name, i) => {
+			const featureName = name.title;
+			return <FeatureListItem key={i} name={featureName} id={i} activeFeature={activeFeature}/>;
+		});
 
 
 		return(
@@ -16,7 +17,7 @@ export default class FeatureList extends React.Component{
 				<p class="menu-heading">
 					Features
 				</p>
-				{Features}
+				{FeaturesList}
 			</nav>
 		);
 	}

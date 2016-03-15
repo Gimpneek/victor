@@ -4,55 +4,8 @@ import Scenario from './Feature/Scenario';
 
 export default class Feature extends React.Component{
 	render(){
-		const Scenarios = [
-			{
-				title: 'Take an Observation',
-				background: null,
-				steps: [
-					{
-						keyword: 'Given',
-						text: 'I am logged in as a nurse',
-						status: 'passed'
-					},
-					{
-						keyword: 'When',
-						text: 'I submit an observation',
-						status: 'failed'
-					},
-					{
-						keyword: 'Then',
-						text: 'I should be told my observation was successfully submitted',
-						status: 'skipped'
-					}
-				]
-			},
-			{
-				title: 'Take a NEWS Observation',
-				background: 'As a nurse, In order for me to carry out the NEWS policy, I want to be able to see the NEWS score when I submit a NEWS observation',
-				steps: [
-					{
-						keyword: 'Given',
-						text: 'I am logged in as a nurse',
-						status: 'passed'
-					},
-					{
-						keyword: 'When',
-						text: 'I submit an observation',
-						status: 'failed'
-					},
-					{
-						keyword: 'Then',
-						text: 'I should be told the NEWS Score',
-						status: 'skipped'
-					},
-					{
-						keyword: 'And',
-						text: 'I should be asked if I want so submit the observation',
-						status: 'skipped'
-					}
-				]
-			}
-		].map((scenario, i) => <Scenario key={i} scenario={scenario} /> );
+		const { scenarios } = this.props;
+		const Scenarios = scenarios.map((scenario, i) => <Scenario key={i} scenario={scenario} />);
 
 		return (
 			<div>
