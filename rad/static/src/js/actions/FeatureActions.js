@@ -5,7 +5,7 @@ export function reloadFeatures(){
     dispatcher.dispatch({type: "FETCH_FEATURES"});
     axios('http://localhost:8000/features')
     .then((data) => {
-        features = JSON.parse(data.data)
+        const features = data.data
         console.log(features);
         dispatcher.dispatch({type: 'RECEIVE_FEATURES', features: features})
     })

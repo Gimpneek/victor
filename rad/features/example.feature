@@ -8,3 +8,8 @@ Feature: Example feature
     Given I have "2" apples
     When I get given "3" apples
     Then I should have "5" apples
+
+  Scenario: Subtraction
+    Given I have "5" apples
+    When I give away "2" apples
+    Then I should have "3" apples
