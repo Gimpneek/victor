@@ -6,74 +6,71 @@ import dispatcher from '../dispatcher';
 class FeatureStore extends EventEmitter{
     constructor() {
         super();
-        this.features = [
-			{
-			    id: 1,
-				title: 'Observation Entry',
-				scenarios: [
-					{
-						title: 'Take an Observation',
-						background: null,
-						steps: [
-							{
-								keyword: 'Given',
-								text: 'I am logged in as a nurse',
-								status: 'passed'
-							},
-							{
-								keyword: 'When',
-								text: 'I submit an observation',
-								status: 'failed'
-							},
-							{
-								keyword: 'Then',
-								text: 'I should be told my observation was successfully submitted',
-								status: 'skipped'
-							}
-						]
-					},
-					{
-						title: 'Take a NEWS Observation',
-						background: 'As a nurse, In order for me to carry out the NEWS policy, I want to be able to see the NEWS score when I submit a NEWS observation',
-						steps: [
-							{
-								keyword: 'Given',
-								text: 'I am logged in as a nurse',
-								status: 'passed'
-							},
-							{
-								keyword: 'When',
-								text: 'I submit an observation',
-								status: 'failed'
-							},
-							{
-								keyword: 'Then',
-								text: 'I should be told the NEWS Score',
-								status: 'skipped'
-							},
-							{
-								keyword: 'And',
-								text: 'I should be asked if I want so submit the observation',
-								status: 'skipped'
-							}
-						]
-					}
-				]
-			},
-			{
-			    id: 2,
-				title: 'Observation Analysis',
-				scenarios: [],
-			},{
-			    id: 3,
-				title: 'Policy Based Escalation',
-				scenarios: []
-			},{
-			    id: 4,
-			    title: 'Workforce Analysis',
-			    scenarios: []
-			}
-		];
+        this.features = [{
+            id: 1,
+            status: "passed",
+            elements: [{
+                name: "Addition",
+                keyword: "Scenario",
+                tags: [],
+                steps: [{
+                    name: "I have \"2\" apples",
+                    keyword: "Given",
+                    step_type: "given",
+                    result: {
+                        status: "passed",
+                        duration: 0.0001289844512939453
+                    },
+                    match: {
+                        location: "../../../../Users/colinwren/Documents/Projects/victor/rad/features/steps/example.py:4",
+                        arguments: [{
+                            name: "starting_apples",
+                            value: "\"2\""
+                        }]
+                    },
+                    location: "../../../../Users/colinwren/Documents/Projects/victor/rad/features/example.feature:8"
+                }, {
+                    name: "I get given \"3\" apples",
+                    keyword: "When",
+                    step_type: "when",
+                    result: {
+                        status: "passed",
+                        duration: 9.608268737792969e-05
+                    },
+                    match: {
+                        location: "../../../../Users/colinwren/Documents/Projects/victor/rad/features/steps/example.py:9",
+                        arguments: [{
+                            name: "more_apples",
+                            value: "\"3\""
+                        }]
+                    },
+                    location: "../../../../Users/colinwren/Documents/Projects/victor/rad/features/example.feature:9"
+                }, {
+                    name: "I should have \"5\" apples",
+                    keyword: "Then",
+                    step_type: "then",
+                    result: {
+                        status: "passed",
+                        duration: 7.82012939453125e-05
+                    },
+                    match: {
+                        location: "../../../../Users/colinwren/Documents/Projects/victor/rad/features/steps/example.py:14",
+                        arguments: [{
+                            name: "sum_of_apples",
+                            value: "\"5\""
+                        }]
+                    },
+                    location: "../../../../Users/colinwren/Documents/Projects/victor/rad/features/example.feature:10"
+                }],
+                location: "../../../../Users/colinwren/Documents/Projects/victor/rad/features/example.feature:7",
+                type: "scenario"
+            }],
+            description: ["As a Victor developer", "In order to show off my idea", "I want to have an example feature to render"],
+            keyword: "Feature",
+            tags: [],
+            location: "../../../../Users/colinwren/Documents/Projects/victor/rad/features/example.feature:2",
+            name: "Example feature"
+        }]
     }
 
     createFeature(feature){

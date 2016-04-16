@@ -3,7 +3,7 @@ import React from 'react';
 export default class Step extends React.Component{
 	render(){
 		const { keyword } = this.props.step;
-		const { text } = this.props.step;
+		const { name } = this.props.step;
 		const { status } = this.props.step;
 		const statusClass = 'media ' + status;
 		return (
@@ -16,7 +16,7 @@ export default class Step extends React.Component{
 					</div>
 					<div class="media-content">
 						<div class="content">
-							<p><strong>{keyword}</strong> {text}</p>
+							<p><strong>{keyword}</strong> {name}</p>
 						</div>
 					</div>
 				</article>

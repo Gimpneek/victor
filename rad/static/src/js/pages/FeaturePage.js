@@ -30,7 +30,7 @@ export default class FeaturePage extends React.Component{
 	render() {
 		const activeFeature = parseInt(window.location.hash.match(/(\d+)/g)[0]);
 		const { features } = this.state;
-		const scenarios = features[activeFeature].scenarios;
+		const scenarios = features[activeFeature].elements;
 
 		return (
 			<div class="columns container is-fluid">

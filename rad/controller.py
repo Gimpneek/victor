@@ -1,12 +1,10 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask import render_template
-from flask.ext.bower import Bower
 from behave.runner import Runner
-from behave.configuration import Configuration, ConfigError
+from behave.configuration import Configuration
 import os
 # Create Application
-app = Flask(__name__)
-Bower(app)
+app = Flask(__name__, static_url_path='')
 script_path = os.path.dirname(os.path.realpath(__file__))
 
 
@@ -52,6 +50,12 @@ def features():
     runner.run()
     feature_output = feature_file.read()
     return feature_output + ']'
+
+
+@app.route('/static/js/<path:path>')
+def send_js(path):
+    return send_from_directory(script_path + '/static/src/', path)
+
 
 if __name__ == "__main__":
     app.run(port=8000)

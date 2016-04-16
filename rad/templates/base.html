@@ -3,51 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Victor</title>
-    <link href="{{ url_for('bower.static', filename='bulma/css/bulma.min.css') }}" rel="stylesheet">
-    <style>
-        .passed{
-            background-color: #97cd76;
-        }
-        .failed{
-            background-color: #ed6c63;
-        }
-        .skipped{
-            background-color: #fce473;
-        }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.16/css/bulma.min.css" rel="stylesheet">
 </head>
-<body class="content">
-    {% for feature in features %}
-        <h1>{{ feature.name }}</h1>
-        <p>{% for desc_line in feature.description %}
-            {{ desc_line }}<br>
-        {%  endfor %}</p>
-        <h2>Scenarios</h2>
-        {% for scenario in feature.scenarios %}
-            <h3>{{ scenario.name }}</h3>
-            <ul>
-                {% for step in scenario.steps %}
-                <li class="{{ step.status }}"><strong>{{ step.keyword }}</strong> {{ step.name }}</li>
-                {% endfor %}
-            </ul>
-        {% endfor %}
-    {% endfor %}
-    <div id="content"></div>
-    <script src="{{ url_for('bower.static', filename='react/react.js') }}"></script>
-    <script src="{{ url_for('bower.static', filename='react/react-dom.js') }}"></script>
-    <script>
-        "use strict";
-        var CommentBox = React.createClass({
-          displayName: "CommentBox",
-          render: function() {
-            return React.createElement(
-                    'div',
-                    'commentBox',
-                    'Hello, world! I am a CommentBox.'
-                );
-            }
-        });
-        ReactDOM.render(React.createElement(CommentBox, {}), document.getElementById('content'));
-    </script>
+<body>
+    <div id="app"></div>
+    <script src="/static/js/victor.min.js"></script>
 </body>
 </html>

@@ -5,7 +5,9 @@ export function reloadFeatures(){
     dispatcher.dispatch({type: "FETCH_FEATURES"});
     axios('http://localhost:8000/features')
     .then((data) => {
-        dispatcher.dispatch({type: 'RECEIVE_FEATURES', features: data})
+        features = JSON.parse(data.data)
+        console.log(features);
+        dispatcher.dispatch({type: 'RECEIVE_FEATURES', features: features})
     })
     .catch((err) => {
         console.log('oops' + err);
