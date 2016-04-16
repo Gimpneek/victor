@@ -5,6 +5,7 @@ import { Router, Route, IndexRoute, hashHistory } from "react-router";
 import Layout from './pages/Layout';
 import HomePage from './pages/HomePage';
 import FeaturePage from './pages/FeaturePage';
+import * as FeatureActions from './actions/FeatureActions';
 
 const app = document.getElementById('app');
 
@@ -16,3 +17,5 @@ ReactDOM.render(
 		</Route>
 	</Router>
 	, app);
+
+FeatureActions.reloadFeatures();

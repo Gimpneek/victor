@@ -92,7 +92,7 @@ class FeatureStore extends EventEmitter{
                 this.createFeature(action.feature);
                 break;
             }
-            case "RECIEVE_FEATURE": {
+            case "RECEIVE_FEATURES": {
                 this.features = action.features;
                 this.emit("change");
                 break;
