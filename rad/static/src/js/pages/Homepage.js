@@ -4,6 +4,7 @@ import FeatureList from '../components/FeatureList';
 
 export default class HomePage extends React.Component{
 	render() {
+	    const activeFeature = parseInt(window.location.hash.match(/(\d+)/g)[0]);
 		const features = [
 			{
 				title: 'Observation Entry',
