@@ -5,14 +5,16 @@ import Scenario from './Feature/Scenario';
 export default class Feature extends React.Component{
 	render(){
 		const { scenarios } = this.props;
-		const Scenarios = scenarios.map((scenario, i) => <Scenario key={i} scenario={scenario} />);
-
+		const { name } = this.props;
+	    var { description } = this.props;
+	    const {status} = this.props;
+ 		const Scenarios = scenarios.map((scenario, i) => <Scenario key={i} scenario={scenario} />);
+        description = description.map((desc, i) => desc + '\n')
+        const statusClass = status == 'passed' ? 'tag is-success' : 'tag is-danger';
 		return (
 			<div>
-				<h1>This is a feature</h1>
-				<p>As a Front End Developer<br/>
-				In order to learn React<br/>
-				I want to be able to create a webapp</p>
+				<h1>{ name } <span class={statusClass}>{status}</span></h1>
+				<p>{description}</p>
 				<div>
 					{Scenarios}
 				</div>

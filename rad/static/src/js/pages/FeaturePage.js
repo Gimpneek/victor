@@ -30,7 +30,11 @@ export default class FeaturePage extends React.Component{
 	render() {
 		const activeFeature = parseInt(window.location.hash.match(/(\d+)/g)[0]);
 		const { features } = this.state;
-		const scenarios = features[activeFeature].elements;
+		const feature = features[activeFeature]
+		const scenarios = feature.elements;
+		const name = feature.name;
+		const description = feature.description;
+		const status = feature.status
 
 		return (
 			<div class="columns container is-fluid">
@@ -38,7 +42,7 @@ export default class FeaturePage extends React.Component{
 					<FeatureList activeFeature={activeFeature} features={features}/>
 				</div>
 				<div class="column">
-					<Feature scenarios={scenarios}/>
+					<Feature scenarios={scenarios} name={name} description={description} status={status}/>
 				</div>
 			</div>
 		);

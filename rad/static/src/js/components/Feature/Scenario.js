@@ -7,8 +7,8 @@ export default class Scenario extends React.Component{
 		const { name } = this.props.scenario;
 		const { background } = this.props.scenario;
 		const { steps } = this.props.scenario;
+		const { status } = this.props.scenario;
 		const Steps = steps.map((step, i) => <Step key={i} step={step} />)
-
 		return(
 			<div class="box">
 				<article class="media">

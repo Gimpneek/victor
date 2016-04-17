@@ -4,7 +4,8 @@ export default class Step extends React.Component{
 	render(){
 		const { keyword } = this.props.step;
 		const { name } = this.props.step;
-		const { status } = this.props.step;
+		const { result } = this.props.step;
+		const status = (result) ? result.status : 'failed'
 		const statusClass = 'media ' + status;
 		return (
 			<div>
