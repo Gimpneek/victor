@@ -8,6 +8,5 @@ install:
   - npm install
   - cd ${TRAVIS_BUILD_DIR}
 script:
-  - nosetests
   - cd rad/static
   - npm run test
