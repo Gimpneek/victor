@@ -27,12 +27,11 @@ export default class HomePage extends React.Component{
     }
 
 	render() {
-	    const activeFeature = parseInt(window.location.hash.match(/(\d+)/g)[0]);
 		const { features } = this.state;
 		return (
 			<div class="columns container is-fluid">
 				<div class="column is-3">
-					<FeatureList activeFeature={activeFeature} features={features}/>
+					<FeatureList features={features}/>
 				</div>
 				<div class="column">
 					<h1>Welcome</h1>

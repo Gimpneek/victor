@@ -31,7 +31,19 @@ export default class FeaturePage extends React.Component{
 		const activeFeature = parseInt(window.location.hash.match(/(\d+)/g)[0]);
 		const { features } = this.state;
 		const feature = features[activeFeature]
-		const scenarios = feature.elements;
+		if(!feature){
+		    return (
+                <div class="columns container is-fluid">
+                    <div class="column is-3">
+                        <FeatureList activeFeature={activeFeature} features={features}/>
+                    </div>
+                    <div class="column">
+                        <h1>Feature not found</h1>
+                    </div>
+                </div>
+            );
+		}
+		const scenarios = (feature && feature.hasOwnProperty('elements')) ? feature.elements : [];
 		const name = feature.name;
 		const description = feature.description;
 		const status = feature.status

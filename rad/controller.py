@@ -29,7 +29,7 @@ class OutputStream(object):
 @app.route('/', methods=['GET'])
 def homepage():
     path_root = '{0}/features/'.format(script_path)
-    config = Configuration(paths=[path_root], steps_dir='{0}steps/'.format(path_root))
+    config = Configuration(paths=[path_root], steps_dir='{0}steps/'.format(path_root), dry_run=True)
     config.format = [config.default_format]
     runner = Runner(config)
     runner.run()
@@ -41,8 +41,6 @@ def features():
     path_root = '{0}/features/'.format(script_path)
     config = Configuration(paths=[path_root],
                            steps_dir='{0}steps/'.format(path_root))
-    # config.format = [config.default_format]
-    # config.outputs = ['features']
     config.format = ['json']
     feature_file = OutputStream('features')
     config.outputs = [feature_file]

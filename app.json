@@ -1,0 +1,8 @@
+{
+  "name": "Victor on Heroku",
+  "description": "Victor - It brings your documentation to life!",
+  "image": "heroku/python",
+  "repository": "https://github.com/Gimpneek/victor",
+  "keywords": ["python", "flask" ],
+  "addons": []
+}
