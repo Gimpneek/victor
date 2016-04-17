@@ -3,7 +3,8 @@ import axios from 'axios';
 
 export function reloadFeatures(){
     dispatcher.dispatch({type: "FETCH_FEATURES"});
-    axios('http://localhost:8000/features')
+    const url = location.protocol + '//' + location.hostname + (location.port ? ':'+location.port: '')
+    axios(url + '/features')
     .then((data) => {
         const features = data.data
         console.log(features);
