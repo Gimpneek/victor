@@ -36,10 +36,8 @@ describe('Step', () => {
         expect(stepNode.textContent).toBe('Given I have "2" apples');
     });
 
-//    it('Shows the icon for the step', () => {
-//        console.log(stepNode.innerHTML);
-//        const iconNode = stepNode.getElementsByTagName('i')[0];
-//        console.log(iconNode.className);
-//        expect(iconNode.getAttribute('class')).toBe('fa fa-check');
-//    });
+    it('Shows the icon for the step', () => {
+        const iconNode = stepNode.getElementsByTagName('i')[0];
+        expect(iconNode.getAttribute('class')).toBe('fa fa-check');
+    });
 });

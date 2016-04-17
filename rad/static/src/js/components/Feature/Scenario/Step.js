@@ -11,7 +11,7 @@ export default class Step extends React.Component{
 			<div>
 				<article class="media">
 					<div class="media-left">
-						<span class="icon is-large"><i class={statusIcon} aria-hidden="true"></i></span>
+						<span class="icon is-large"><i className={statusIcon} aria-hidden="true"></i></span>
 					</div>
 					<div class="media-content">
 						<div class="content">
