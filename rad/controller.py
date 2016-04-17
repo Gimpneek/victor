@@ -8,6 +8,8 @@ app = Flask(__name__, static_url_path='')
 script_path = os.path.dirname(os.path.realpath(__file__))
 
 
+
+
 class OutputStream(object):
 
     def __init__(self, filename):
@@ -29,8 +31,11 @@ class OutputStream(object):
 @app.route('/', methods=['GET'])
 def homepage():
     path_root = '{0}/features/'.format(script_path)
-    config = Configuration(paths=[path_root], steps_dir='{0}steps/'.format(path_root), dry_run=True)
+    config = Configuration(
+        steps_dir='{0}steps/'.format(path_root),
+        dry_run=True)
     config.format = [config.default_format]
+    config.paths = [path_root]
     runner = Runner(config)
     runner.run()
     return render_template('base.html', features=runner.features)
@@ -39,9 +44,9 @@ def homepage():
 @app.route('/features', methods=['GET'])
 def features():
     path_root = '{0}/features/'.format(script_path)
-    config = Configuration(paths=[path_root],
-                           steps_dir='{0}steps/'.format(path_root))
+    config = Configuration(steps_dir='{0}steps/'.format(path_root))
     config.format = ['json']
+    config.paths = [path_root]
     feature_file = OutputStream('features')
     config.outputs = [feature_file]
     runner = Runner(config)
