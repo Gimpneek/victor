@@ -33,12 +33,16 @@ export default class FeaturePage extends React.Component{
 		const feature = features[activeFeature]
 		if(!feature){
 		    return (
-                <div class="columns container is-fluid">
-                    <div class="column is-3">
-                        <FeatureList activeFeature={activeFeature} features={features}/>
-                    </div>
-                    <div class="column">
-                        <h1>Feature not found</h1>
+		        <div class="container">
+                    <div class="columns">
+                        <div class="column is-3-desktop">
+                            <FeatureList activeFeature={activeFeature} features={features}/>
+                        </div>
+                        <div class="column">
+                            <div class="content">
+                                <h1>Feature not found</h1>
+                            </div>
+                        </div>
                     </div>
                 </div>
             );
@@ -49,14 +53,18 @@ export default class FeaturePage extends React.Component{
 		const status = feature.status
 
 		return (
-			<div class="columns container is-fluid">
-				<div class="column is-3">
-					<FeatureList activeFeature={activeFeature} features={features}/>
-				</div>
-				<div class="column">
-					<Feature scenarios={scenarios} name={name} description={description} status={status}/>
-				</div>
-			</div>
+		    <div class="container">
+                <div class="columns">
+                    <div class="column is-3-desktop">
+                        <FeatureList activeFeature={activeFeature} features={features}/>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <Feature scenarios={scenarios} name={name} description={description} status={status}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		);
 	}
 };

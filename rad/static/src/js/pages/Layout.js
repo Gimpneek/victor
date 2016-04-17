@@ -8,7 +8,7 @@ export default class Layout extends React.Component{
 		const activeFeature = this.props.params.feature ? parseInt(this.props.params.feature) : 0;
 
 		return (
-			<div class="content container is-fluid">
+			<div>
 				<section class="hero">
 					<Navigation location={location}/>
 				</section>

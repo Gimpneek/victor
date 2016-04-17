@@ -29,14 +29,18 @@ export default class HomePage extends React.Component{
 	render() {
 		const { features } = this.state;
 		return (
-			<div class="columns container is-fluid">
-				<div class="column is-3">
-					<FeatureList features={features}/>
-				</div>
-				<div class="column">
-					<h1>Welcome</h1>
-				</div>
-			</div>
+		    <div class="container">
+                <div class="columns">
+                    <div class="column is-3-desktop">
+                        <FeatureList features={features}/>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <h1>Welcome</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
 		);
 	}
 };
