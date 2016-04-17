@@ -14,10 +14,12 @@ export default class FeatureList extends React.Component{
 
 		return(
 			<nav class="menu">
-				<p class="menu-heading">
+				<p class="menu-label">
 					Features
 				</p>
-				{FeaturesList}
+				<ul class="menu-list">
+				    {FeaturesList}
+				</ul>
 			</nav>
 		);
 	}
