@@ -9,8 +9,15 @@ export default class Scenario extends React.Component{
 		const { steps } = this.props.scenario;
 		const { status } = this.props.scenario;
 		const Steps = steps.map((step, i) => <Step key={i} step={step} />)
+		const statusPassed = steps.reduce((a, b) => {
+		    if(b.result){
+		        return (b.result.status == 'passed');
+		    }
+		    return false;
+		})
+		const statusClass = statusPassed ? 'box passed' : 'box failed';
 		return(
-			<div class="box">
+			<div class={statusClass}>
 				<article class="media">
 					<div class="media-content">
 						<div class="content">

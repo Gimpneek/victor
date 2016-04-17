@@ -6,14 +6,12 @@ export default class Step extends React.Component{
 		const { name } = this.props.step;
 		const { result } = this.props.step;
 		const status = (result) ? result.status : 'failed'
-		const statusClass = 'media ' + status;
+		const statusIcon = (status == 'passed') ? 'fa fa-check' : 'fa fa-exclamation';
 		return (
 			<div>
-				<article class={statusClass}>
+				<article class="media">
 					<div class="media-left">
-						<p class="image is-48x48">
-							<img src="http://placehold.it/96x96"/>
-						</p>
+						<span class="icon is-large"><i class={statusIcon} aria-hidden="true"></i></span>
 					</div>
 					<div class="media-content">
 						<div class="content">
