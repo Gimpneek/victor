@@ -1,11 +1,12 @@
 language: python
+sudo: required
 python:
   - "2.7"
   - "3.2"
 before_install:
-  - npm cache clean -f
-  - npm install -g n
-  - n stable
+  - sudo npm cache clean -f
+  - sudo npm install -g n
+  - sudo n stable
 install:
   - pip install -r requirements.txt
   - cd rad/static
