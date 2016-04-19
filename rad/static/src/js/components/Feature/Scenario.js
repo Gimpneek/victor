@@ -5,24 +5,25 @@ import Step from './Scenario/Step';
 export default class Scenario extends React.Component{
 	render(){
 		const { name } = this.props.scenario;
-		const { background } = this.props.scenario;
 		const { steps } = this.props.scenario;
-		const { status } = this.props.scenario;
-		const Steps = steps.map((step, i) => <Step key={i} step={step} />)
-		const statusPassed = steps.reduce((a, b) => {
-		    if(b.result){
-		        return (b.result.status == 'passed');
-		    }
-		    return false;
-		})
-		const statusClass = statusPassed ? 'box passed' : 'box failed';
+		const Steps = steps.map((step, i) => <Step key={i} step={step} />);
+		var statusPassed = ['failed'];
+		if(steps.length > 0) {
+			statusPassed = steps.map((step) => {
+				if(step.result && step.result.status){
+					return step.result.status;
+				} else {
+					return 'failed';
+				}
+			})
+		}
+		const statusClass = statusPassed.indexOf('failed') > -1 ? 'box failed' : 'box passed';
 		return(
-			<div class={statusClass}>
+			<div className={statusClass}>
 				<article class="media">
 					<div class="media-content">
 						<div class="content">
 							<h3><strong>Scenario:</strong> {name}</h3>
-							<p><strong>Background:</strong> {background}</p>
 							<div>
 								{Steps}
 							</div>
