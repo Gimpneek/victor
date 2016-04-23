@@ -2,7 +2,7 @@ from flask import Flask, send_from_directory
 from flask import render_template
 from behave.runner import Runner
 from behave.configuration import Configuration
-import os
+import os, json
 # Create Application
 app = Flask(__name__, static_url_path='')
 script_path = os.path.dirname(os.path.realpath(__file__))
@@ -53,6 +53,25 @@ def features():
     runner.run()
     feature_output = feature_file.read()
     return feature_output + ']'
+
+
+@app.route('/run/scenario/<scenario>', methods=['GET'])
+def run_step(scenario):
+    path_root = '{0}/features/'.format(script_path)
+    config = Configuration(steps_dir='{0}steps/'.format(path_root), name=scenario)
+    config.format = ['json']
+    config.paths = [path_root]
+    feature_file = OutputStream('features')
+    config.outputs = [feature_file]
+    runner = Runner(config)
+    runner.run()
+    feature_output = json.loads(feature_file.read()+']')
+    scenarios = []
+    for feature in feature_output:
+        for scen in feature['elements']:
+            if scen['name'] == scenario:
+                scenarios.append(scen)
+    return json.dumps(scenarios)
 
 
 @app.route('/static/js/<path:path>')
