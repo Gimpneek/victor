@@ -1,4 +1,6 @@
 jest.unmock('../components/Feature/Scenario/Step');
+jest.unmock('../components/Feature/Scenario/Step/StepReadView');
+jest.unmock('../components/Feature/Scenario/Step/StepEditView');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -53,7 +55,7 @@ describe('Step', () => {
     });
 
     it('Shows the step keyword and step name', () => {
-        expect(stepNode.textContent).toBe('Given I have "2" apples');
+        expect(stepNode.textContent).toBe('Given I have "2" applesEdit');
     });
 
     it('Shows the icon for the step - passed', () => {
