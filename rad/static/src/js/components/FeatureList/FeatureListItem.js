@@ -8,7 +8,7 @@ export default class FeatureListItem extends React.Component{
 		const { activeFeature } = this.props;
 		const activeClass = (id === activeFeature) ? 'menu-block is-active': 'menu-block';
 		return (
-			<a class={activeClass} href={featureUrl}>{name}</a>
+			<a className={activeClass} href={featureUrl}>{name}</a>
 		)
 	}
 }
