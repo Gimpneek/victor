@@ -77,8 +77,11 @@ def run_scenario(scenario):
 @app.route('/run/custom', methods=['POST'])
 def run_step():
     data = request.json.get('scenario')
+    directory = 'user_defined'
+    if not os.path.exists(directory):
+        os.makedirs(directory)
     # Create a file for the step
-    with open('{0}/user_defined/test_file.feature'.format(script_path), 'w') as test_file:
+    with open('{0}/{1}/test_file.feature'.format(script_path, directory), 'w') as test_file:
         test_file.write("""
         Feature: Test Feature
 
