@@ -21,20 +21,18 @@ export default class Scenario extends React.Component{
 			const step = steps[i];
 			step_content += step.textContent.replace('Edit', '') + '\n';
 		}
-		console.log(step_content);
 		const feature_id = this.state.feature_id;
 		const scenario_id = this.state.scenario_id;
 		axios.post(url + '/run/custom', {
 			'scenario': step_content
 		}).then((data) => {
-			const scenario = data.data[0].elements[scenario_id];
+			const scenario = data.data[scenario_id].elements[0];
 			dispatcher.dispatch({
 				type: 'RECEIVE_SCENARIOS',
 				feature_id: feature_id,
 				scenario_id: scenario_id,
 				steps: scenario.steps
 			});
-			console.log(scenario);
 		});
 	}
 
