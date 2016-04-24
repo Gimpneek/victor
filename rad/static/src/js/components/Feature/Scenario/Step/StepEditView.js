@@ -23,7 +23,6 @@ export default class StepEditView extends React.Component {
         return (
             <span>
                 <input type="text" value={this.state.name} onChange={this.handleChange.bind(this)}/>
-                <button className="button is-info">Run</button>
                 <button className="button is-danger" onClick={changeEditMode}>Close</button>
             </span>
         )

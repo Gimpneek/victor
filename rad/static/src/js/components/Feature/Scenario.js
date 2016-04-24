@@ -23,7 +23,7 @@ export default class Scenario extends React.Component{
 				<article class="media">
 					<div class="media-content">
 						<div class="content">
-							<h3><strong>Scenario:</strong> {name}</h3>
+							<h3><strong>Scenario:</strong> {name} <button class="is-pulled-right button is-info">Run</button></h3>
 							<div>
 								{Steps}
 							</div>

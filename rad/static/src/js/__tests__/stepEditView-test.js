@@ -16,11 +16,6 @@ describe('Step - Edit View', () => {
         const nameNode = stepEditViewNode.getElementsByTagName('input')[0];
         expect(nameNode.value).toBe('Test Name');
     });
-    
-    it('Shows a Run button', () => {
-        const buttonNode = stepEditViewNode.getElementsByClassName('is-info')[0];
-        expect(buttonNode.textContent).toBe('Run');
-    });
 
     it('Shows a close button', () => {
         const buttonNode = stepEditViewNode.getElementsByClassName('is-danger')[0];
