@@ -56,7 +56,7 @@ def features():
 
 
 @app.route('/run/scenario/<scenario>', methods=['GET'])
-def run_step(scenario):
+def run_scenario(scenario):
     path_root = '{0}/features/'.format(script_path)
     config = Configuration(steps_dir='{0}steps/'.format(path_root), name=scenario)
     config.format = ['json']
@@ -72,6 +72,30 @@ def run_step(scenario):
             if scen['name'] == scenario:
                 scenarios.append(scen)
     return json.dumps(scenarios)
+
+
+@app.route('/run/step/<step>', methods=['GET'])
+def run_step(step):
+    # Create a file for the step
+    with open('{0}/user_defined/test_file.feature'.format(script_path), 'w') as test_file:
+        test_file.write("""
+        Feature: Test Feature
+
+            Scenario: Test Scenario
+                {0}
+        """.format(step))
+    # Run the runner against the step
+    path_root = '{0}/user_defined'.format(script_path)
+    config = Configuration()
+    config.format = ['json']
+    config.paths = [path_root]
+    config.steps_dir = '{0}/features/steps/'.format(script_path)
+    feature_file = OutputStream('features')
+    config.outputs = [feature_file]
+    runner = Runner(config)
+    runner.run()
+    # Return the results
+    return feature_file.read() + ']'
 
 
 @app.route('/static/js/<path:path>')
