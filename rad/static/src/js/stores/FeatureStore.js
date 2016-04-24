@@ -94,6 +94,11 @@ class FeatureStore extends EventEmitter{
                 this.emit("change");
                 break;
             }
+            case "RECEIVE_SCENARIOS": {
+                this.features[action.feature_id].elements[action.scenario_id].steps = action.steps;
+                this.emit("change");
+                break;
+            }
         }
     }
 }

@@ -31,7 +31,7 @@ export default class Step extends React.Component{
 						<span class="icon is-large"><i className={statusIcon} aria-hidden="true"></i></span>
 					</div>
 					<div class="media-content">
-						<div class="content">
+						<div class="content step-content">
 							<p><strong>{keyword}</strong> {viewToRender}</p>
 						</div>
 					</div>

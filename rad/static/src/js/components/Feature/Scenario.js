@@ -1,8 +1,43 @@
 import React from 'react';
-
+import ReactDOM from 'react-dom';
 import Step from './Scenario/Step';
+import axios from 'axios';
+import dispatcher from '../../dispatcher';
 
 export default class Scenario extends React.Component{
+	constructor(props, context){
+		super(props, context);
+		this.state = {
+			feature_id: this.props.feature_id,
+			scenario_id: this.props.scenario_id
+		}
+	}
+	getSteps(){
+		const scenarioNode = ReactDOM.findDOMNode(this);
+		const url = location.protocol + '//' + location.hostname + (location.port ? ':'+location.port: '');
+		const steps = scenarioNode.getElementsByClassName('step-content');
+		var step_content = '';
+		for(var i = 0; i < steps.length; i++){
+			const step = steps[i];
+			step_content += step.textContent.replace('Edit', '') + '\n';
+		}
+		console.log(step_content);
+		const feature_id = this.state.feature_id;
+		const scenario_id = this.state.scenario_id;
+		axios.post(url + '/run/custom', {
+			'scenario': step_content
+		}).then((data) => {
+			const scenario = data.data[0].elements[scenario_id];
+			dispatcher.dispatch({
+				type: 'RECEIVE_SCENARIOS',
+				feature_id: feature_id,
+				scenario_id: scenario_id,
+				steps: scenario.steps
+			});
+			console.log(scenario);
+		});
+	}
+
 	render(){
 		const { name } = this.props.scenario;
 		const { steps } = this.props.scenario;
@@ -23,7 +58,7 @@ export default class Scenario extends React.Component{
 				<article class="media">
 					<div class="media-content">
 						<div class="content">
-							<h3><strong>Scenario:</strong> {name} <button class="is-pulled-right button is-info">Run</button></h3>
+							<h3><strong>Scenario:</strong> {name} <button class="is-pulled-right button is-info" onClick={this.getSteps.bind(this)}>Run</button></h3>
 							<div>
 								{Steps}
 							</div>

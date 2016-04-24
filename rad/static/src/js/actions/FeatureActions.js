@@ -6,8 +6,7 @@ export function reloadFeatures(){
     const url = location.protocol + '//' + location.hostname + (location.port ? ':'+location.port: '')
     axios(url + '/features')
     .then((data) => {
-        const features = data.data
-        console.log(features);
+        const features = data.data;
         dispatcher.dispatch({type: 'RECEIVE_FEATURES', features: features})
     })
     .catch((err) => {

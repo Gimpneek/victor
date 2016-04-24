@@ -30,7 +30,7 @@ export default class FeaturePage extends React.Component{
 	render() {
 		const activeFeature = parseInt(window.location.hash.match(/(\d+)/g)[0]);
 		const { features } = this.state;
-		const feature = features[activeFeature]
+		const feature = features[activeFeature];
 		if(!feature){
 		    return (
 		        <div class="container">

@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, request
 from flask import render_template
 from behave.runner import Runner
 from behave.configuration import Configuration
@@ -74,8 +74,9 @@ def run_scenario(scenario):
     return json.dumps(scenarios)
 
 
-@app.route('/run/step/<step>', methods=['GET'])
-def run_step(step):
+@app.route('/run/custom', methods=['POST'])
+def run_step():
+    data = request.json.get('scenario')
     # Create a file for the step
     with open('{0}/user_defined/test_file.feature'.format(script_path), 'w') as test_file:
         test_file.write("""
@@ -83,7 +84,7 @@ def run_step(step):
 
             Scenario: Test Scenario
                 {0}
-        """.format(step))
+        """.format(data))
     # Run the runner against the step
     path_root = '{0}/user_defined'.format(script_path)
     config = Configuration()
