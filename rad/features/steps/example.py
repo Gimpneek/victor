@@ -11,9 +11,9 @@ def impl(ctx, more_apples):
     ctx.final_apples = ctx.starting_apples + int(more_apples.replace('"', ''))
 
 
-# @when('I give away {less_apples} apples')
-# def impl(ctx, less_apples):
-#     ctx.final_apples = ctx.starting_apples - int(less_apples.replace('"', ''))
+@when('I give away {less_apples} apples')
+def impl(ctx, less_apples):
+    ctx.final_apples = ctx.starting_apples - int(less_apples.replace('"', ''))
 
 
 @then('I should have {sum_of_apples} apples')

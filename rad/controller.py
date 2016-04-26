@@ -98,6 +98,7 @@ def run_step():
     config.outputs = [feature_file]
     runner = Runner(config)
     runner.run()
+    os.remove('{0}/test_file.feature'.format(directory))
     # Return the results
     return feature_file.read() + ']'
 

@@ -8,3 +8,8 @@ Feature: Another Example
     Given I have "2" apples
     When I multiply my apples by "2"
     Then I should have "4" apples
+
+  Scenario: Division
+    Given I have "4" apples
+    When I divide my apples by "2"
+    Then I should have "2" apples
