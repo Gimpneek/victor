@@ -8,7 +8,6 @@ export default class Scenario extends React.Component{
 	constructor(props, context){
 		super(props, context);
 		this.state = {
-			feature_id: this.props.feature_id,
 			scenario_id: this.props.scenario_id
 		}
 	}
@@ -21,7 +20,6 @@ export default class Scenario extends React.Component{
 			const step = steps[i];
 			step_content += step.textContent.replace('Edit', '') + '\n';
 		}
-		const feature_id = this.state.feature_id;
 		const scenario_id = this.state.scenario_id;
 		axios.post(url + '/run/custom', {
 			'scenario': step_content
@@ -29,7 +27,7 @@ export default class Scenario extends React.Component{
 			const scenario = data.data[scenario_id].elements[0];
 			dispatcher.dispatch({
 				type: 'RECEIVE_SCENARIOS',
-				feature_id: feature_id,
+				feature_id: parseInt(window.location.hash.match(/(\d+)/g)[0]),
 				scenario_id: scenario_id,
 				steps: scenario.steps
 			});

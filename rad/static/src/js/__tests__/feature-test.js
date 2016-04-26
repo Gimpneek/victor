@@ -1,4 +1,5 @@
 jest.unmock('../components/Feature');
+jest.unmock('axios');
 
 import React from 'react';
 import ReactDOM from 'react-dom';

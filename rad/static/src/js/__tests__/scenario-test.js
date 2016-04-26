@@ -1,4 +1,5 @@
 jest.unmock('../components/Feature/Scenario');
+jest.unmock('axios');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -68,7 +69,7 @@ describe('Scenario', () => {
 
     it('Shows the scenario name from the Scenario object', () => {
         const nameNode = scenarioNoStepNode.getElementsByTagName('h3')[0];
-        expect(nameNode.textContent).toBe('Scenario: Addition');
+        expect(nameNode.textContent).toBe('Scenario: Addition Run');
     });
     
     it('Changes the background colour of depending on status - no steps', () => {
