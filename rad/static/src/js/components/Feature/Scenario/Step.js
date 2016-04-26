@@ -16,6 +16,11 @@ export default class Step extends React.Component{
 	changeStep(event){
 		this.setState({name: event.target.value});
 	}
+	componentWillReceiveProps(props){
+		this.setState({
+			name: props.step.name
+		})
+	}
 	render(){
 		const { keyword } = this.props.step;
 		const { result } = this.props.step;

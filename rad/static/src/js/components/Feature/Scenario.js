@@ -24,7 +24,7 @@ export default class Scenario extends React.Component{
 		axios.post(url + '/run/custom', {
 			'scenario': step_content
 		}).then((data) => {
-			const scenario = data.data[scenario_id].elements[0];
+			const scenario = data.data[0].elements[0];
 			dispatcher.dispatch({
 				type: 'RECEIVE_SCENARIOS',
 				feature_id: parseInt(window.location.hash.match(/(\d+)/g)[0]),
@@ -48,6 +48,7 @@ export default class Scenario extends React.Component{
 				}
 			})
 		}
+
 		const statusClass = statusPassed.indexOf('failed') > -1 ? 'box failed' : 'box passed';
 		return(
 			<div className={statusClass}>
